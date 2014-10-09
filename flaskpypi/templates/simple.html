@@ -1,0 +1,8 @@
+<html>
+<body>
+  <h1>Links for {{ package }}</h1>
+  {% for download in downloads %}
+      <a href="{{ download.link }}">{{ download.title }}</a><br />
+  {% endfor %}
+</body>
+</html>

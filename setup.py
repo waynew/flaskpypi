@@ -44,7 +44,7 @@ setup(
     ],
     package_dir={'flaskpypi': 'flaskpypi'},
     include_package_data=True,
-    install_requires=[
+    install_requires=['Flask',
     ],
     license="BSD",
     zip_safe=False,
