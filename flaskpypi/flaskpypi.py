@@ -22,7 +22,11 @@ def main():
 @app.route('/simple')
 @app.route('/simple/')
 def simple():
-    return '<html><body><a href="/simple/flaskpypi">flaskpypi</a></body></html>'
+    pyroot = '/home/wayne/programming/flaskpypi/dist/'
+    dirnames = (dirname for dirname in os.listdir(pyroot) if os.path.isdir(os.path.join(pyroot, dirname)))
+    return ('<html><body>'
+            + '<br>'.join('<a href="/simple/{0}">{0}</a>'.format(dirname) for dirname in dirnames)
+            + '</body></html>')
 
 
 @app.route('/simple/<app>')
@@ -49,7 +53,7 @@ def simple_package(app_):
     for path in os.listdir(dirname):
         download = Download()
         download.link = '/simple/download/'+app_+'/'+path
-        download.title = path[:path.rfind('#')]
+        download.title = path
         downloads.append(download)
         app.logger.debug(path)
          
